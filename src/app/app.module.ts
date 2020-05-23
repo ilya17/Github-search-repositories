@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main.component';
-import { SearchComponent } from './search/search.component';
 import { ResultComponent } from './result/result.component';
 import { SharedModule } from './shared/shared.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -16,7 +16,6 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     MainComponent,
-    SearchComponent,
     ResultComponent
   ],
   imports: [
@@ -24,7 +23,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

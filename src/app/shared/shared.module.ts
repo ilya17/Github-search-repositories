@@ -4,7 +4,10 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RepositoriesService } from '../services/repositories.service';
-import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -14,13 +17,21 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
-  exports:[
+  exports: [
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
-  providers:[RepositoriesService],
+  providers: [RepositoriesService],
 })
 export class SharedModule { }
