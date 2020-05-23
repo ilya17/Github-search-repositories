@@ -1,0 +1,25 @@
+.project-title {
+  margin-bottom: 50px;
+}
+
+.project-seach {
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  &__wrapper {
+    height: 100%;
+  }
+}
+
+.result-spinner {
+  position: fixed;
+  left: 45%;
+  width: 150px;
+  height: 150px;
+}
+
+a {
+  text-decoration: none;
+}
