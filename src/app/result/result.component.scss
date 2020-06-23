@@ -1,5 +1,17 @@
+a {
+  text-decoration: none;
+}
+
 .project-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rebeccapurple;
+  img {
+    width: 20%;
+  }
 }
 
 .project-seach {
@@ -8,8 +20,22 @@
 
 table {
   width: 100%;
+}
+
+.table {
+  
   &__wrapper {
     height: 100%;
+  }
+
+  &__row {
+    transition: all 0.3s;
+  }
+
+  &__row:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+    transition: all 0.3s;
   }
 }
 
@@ -18,8 +44,4 @@ table {
   left: 45%;
   width: 150px;
   height: 150px;
-}
-
-a {
-  text-decoration: none;
 }

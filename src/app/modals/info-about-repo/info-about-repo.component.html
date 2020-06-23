@@ -1,0 +1,15 @@
+<div class="dialog-wrapper">
+    <div mat-dialog-title class="dialog-wrapper__title">
+        <div class="dialog-wrapper__title-img" [style.background-image]="'url(' + data.owner.avatar_url + ')'"></div>
+    </div>
+    <mat-dialog-content class="dialog-wrapper__content">
+        <span class="dialog-wrapper__content-item">Название: {{data.description}}</span>
+        <span class="dialog-wrapper__content-item">Имя пользователя: {{data.owner.login}}</span>
+        <span class="dialog-wrapper__content-item">Язык: {{data.language}}</span>
+        <span class="dialog-wrapper__content-item">Количество просмотров: {{data.watchers}}</span>
+        <a class="dialog-wrapper__content-link" [href]="data.html_url" target="_blank">Перейти в репозиторий на GitHub</a>
+    </mat-dialog-content>
+    <mat-dialog-actions class="dialog-wrapper__buttons">
+        <button mat-raised-button mat-dialog-close>Закрыть</button>
+    </mat-dialog-actions>
+</div>
