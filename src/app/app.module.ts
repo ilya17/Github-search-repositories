@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { ResultComponent } from './result/result.component';
 import { SharedModule } from './shared/shared.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfoAboutRepoComponent } from './modals/info-about-repo/info-about-repo.component';
 
 
 
@@ -16,7 +17,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   declarations: [
     AppComponent,
     MainComponent,
-    ResultComponent
+    ResultComponent,
+    InfoAboutRepoComponent
   ],
   imports: [
     BrowserModule,

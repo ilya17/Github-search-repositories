@@ -1,12 +1,11 @@
-import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { RepositoryInfo } from '../shared/models/repository-info';
+import { Component, OnInit, OnDestroy, EventEmitter, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 import { RepositoriesService } from '../services/repositories.service';
-import { Subject, of } from 'rxjs';
-import { takeUntil, debounceTime, switchMap, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil, debounceTime, tap } from 'rxjs/operators';
 import { Repository } from '../shared/models/repository';
 import { FormControl } from '@angular/forms';
-import { error } from 'util';
+import { InfoAboutRepoComponent } from '../modals/info-about-repo/info-about-repo.component';
 
 @Component({
   selector: 'app-result',
@@ -14,21 +13,26 @@ import { error } from 'util';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit, OnDestroy {
+
+  @ViewChild(MatSort, { static : false }) sort: MatSort;
+
   public search = new FormControl('');
   public displayedColumns: string[] = ['number', 'url', 'language', 'name_repository', 'name', 'created'];
   public dataSource: MatTableDataSource<Repository[]>;
   public onTextareaInputEvent$ = new EventEmitter<string>();
-  public page = 1;
-  public perPage = 10;
+  public page = 1; // траница
+  public perPage = 10; // количество репозиториев на странице
   public errorRepositories = false;
   public repositories = [];
   public value: string;
   public isLoading = true;
-  public onChange = (fn: any): void => { };
+  public onChange = (fn: any): void => {};
 
   private destroyed$: Subject<void> = new Subject();
 
   constructor(
+    public dialog: MatDialog,
+
     private repositoriesService: RepositoriesService,
   ) {
     this.onTextareaInputEvent$
@@ -48,9 +52,7 @@ export class ResultComponent implements OnInit, OnDestroy {
         }
       );
   }
-
   ngOnInit() {
-
   }
 
   ngOnDestroy(): void {
@@ -73,6 +75,7 @@ export class ResultComponent implements OnInit, OnDestroy {
             if (res) {
               this.repositories = this.repositories.concat(res);
               this.dataSource = new MatTableDataSource(this.repositories);
+              this.dataSource.sort = this.sort;
               this.isLoading = true;
             }
           },
@@ -94,4 +97,7 @@ export class ResultComponent implements OnInit, OnDestroy {
     this.loadRepositories(this.value);
   }
 
+  openInfoModal(row) {
+    const dialogref = this.dialog.open(InfoAboutRepoComponent, {data: row});
+  }
 }
